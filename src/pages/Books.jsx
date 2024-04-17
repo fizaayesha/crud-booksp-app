@@ -8,7 +8,7 @@ const Books = () => {
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:8800/books");
+        const res = await axios.get("https://crud-books-api-pro.vercel.app/books");
         setBooks(res.data);
       } catch (err) {
         console.log(err);
@@ -20,7 +20,7 @@ const Books = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8800/books/${id}`);
+      await axios.delete(`https://crud-books-api-pro.vercel.app/${id}`);
       // After deletion, update state by filtering out the deleted book
       setBooks((prevBooks) => prevBooks.filter((book) => book.id !== id));
     } catch (err) {

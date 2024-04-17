@@ -10,22 +10,22 @@ const Add = () => {
     price: null,
     cover: "",
   });
-  const [error,setError] = useState(false)
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
-
   const handleChange = (e) => {
     setBook((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
+  
+  axios.defaults.withCredentials = true;
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8800/books", book);
+      await axios.post("https://crud-books-api-pro.vercel.app/books", book);
       navigate("/");
     } catch (err) {
       console.log(err);
-      setError(true)
+      setError(true);
     }
   };
 
